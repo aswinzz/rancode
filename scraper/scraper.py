@@ -7,7 +7,7 @@ import random
 def scrape(type_question):
     sourceUrl = 'https://www.codechef.com/problems/'+type_question
     try:
-        browser = webdriver.PhantomJS(executable_path = '../phantomjs/bin/phantomjs')
+        browser = webdriver.PhantomJS(executable_path = 'scraper/phantomjs/bin/phantomjs')
     except:
         browser = webdriver.PhantomJS(executable_path = './phantomjs/bin/phantomjs')
     browser.get(sourceUrl)
@@ -28,6 +28,10 @@ def scrape(type_question):
             problem=[]
             problem.append(type_question)
             i=0
+            data={}
+            data['type']=type_question
+            if(type_question=="school"):
+                data['type']="beginner"
             for td in tds:
                 if(i==0):
                     name = td.find('div',class_='problemname')
@@ -37,6 +41,9 @@ def scrape(type_question):
                     name = a.text
                     print(name)
                     print(url)
+                    name=name.strip('\n')
+                    data['name']=name
+                    data['url']=url
                     problem.append(name)
                     problem.append(url)
                 if(i==1):
@@ -46,12 +53,15 @@ def scrape(type_question):
                     url = 'https://www.codechef.com'+url
                     print(url)
                     print(code)
+                    data['code']=code
+                    data['submit_url']=url
                     problem.append(code)
                     problem.append(url)
                 if(i==2):
                     submissions = td.find('div')
                     submissions = submissions.text
                     print(submissions)
+                    data['submissions']=submissions
                     problem.append(submissions)
                 if(i==3):
                     accuracy = td.find('a')
@@ -60,8 +70,11 @@ def scrape(type_question):
                     accuracy = accuracy.text
                     print(url)
                     print(accuracy)
+                    data['accuracy']=accuracy
+                    data['status']=url
                     problem.append(url)
                     problem.append(accuracy)
+                    return data
                 i+=1
         j+=1 
             # problem.append()
@@ -75,4 +88,4 @@ if __name__ == "__main__":
         type_question = 'medium'
     if(type_no==4):
         type_question = 'hard'
-    scrape(type_question)
+    problem=scrape(type_question)
