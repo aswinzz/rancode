@@ -1,4 +1,11 @@
 $(function(){
+var url1='https://api.progressdash.xyz/v1/images/random';
+requestJSON(url1, function(response) {
+  console.log(response);
+  var output = 'url('+response.image+')' 
+  $('#maindiv').css('background-image',output);
+});
+
 var url= 'https://rancode.herokuapp.com/api';
   requestJSON(url, function(response) {
     console.log(response);
