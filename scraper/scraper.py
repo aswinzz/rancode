@@ -6,10 +6,11 @@ import random
 
 def scrape(type_question):
     sourceUrl = 'https://www.codechef.com/problems/'+type_question
-    try:
-        browser = webdriver.PhantomJS(executable_path = 'scraper/phantomjs/bin/phantomjs')
-    except:
-        browser = webdriver.PhantomJS(executable_path = './phantomjs/bin/phantomjs')
+    # try:
+    #     browser = webdriver.PhantomJS(executable_path = 'scraper/phantomjs/bin/phantomjs')
+    # except:
+    #     browser = webdriver.PhantomJS(executable_path = './phantomjs/bin/phantomjs')
+    browser = webdriver.PhantomJS()
     browser.get(sourceUrl)
     html = browser.page_source
     soup = BeautifulSoup(html,'lxml')
