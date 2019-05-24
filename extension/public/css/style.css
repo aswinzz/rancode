@@ -265,7 +265,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 .navbar-brand .logo, .navbar-brand .logo-alt {
-    max-height: 50px;
+    max-height: 100px;
     display: block;
 }
 

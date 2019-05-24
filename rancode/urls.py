@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from main.views import main_view
+from main.views import main_view,scrape_view
 from django.conf.urls import url,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'api/', main_view.as_view(), name='MainView'),
+    url(r'scrape/', scrape_view.as_view(), name='ScrapeView'),
 ]
