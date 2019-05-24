@@ -25,7 +25,7 @@ SECRET_KEY = '-mw1g0t!q6(7(ew&!2+yo-6160qm1ffym9zszq!__5c_4cjt+v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://rancode.herokuapp.com']
+ALLOWED_HOSTS = ['rancode.herokuapp.com']
 
 
 # Application definition
