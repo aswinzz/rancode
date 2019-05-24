@@ -99,9 +99,7 @@ venv.bak/
 
 # mkdocs documentation
 /site
-scraper/phantomjs
-scraper/ghostdriver.log
-sca
+
 # mypy
 .mypy_cache/
 extension/yarn.lock
